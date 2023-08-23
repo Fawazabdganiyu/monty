@@ -1,5 +1,9 @@
 #include "monty.h"
 
+unsigned int get_words(char *s);
+unsigned int get_line(char *buf);
+char **split_string(char *buf, char *delim);
+
 /**
  * get_words - returns the number of words in a string
  * @s: The string to be tranversed
@@ -26,7 +30,12 @@ unsigned int get_words(char *s)
 	return (len + 1);
 }
 
-/***/
+/**
+ * get_line - gets the numbers of lines in the file
+ * @buf: The buffer used for reading the file
+ *
+ * Return: The number of lines in the file
+ */
 unsigned int get_line(char *buf)
 {
 	unsigned int lines = 0;
@@ -41,7 +50,13 @@ unsigned int get_line(char *buf)
 	return (lines);
 }
 
-/***/
+/**
+ * split_string - tokenizes the strings in the file
+ * @buf: The buffer used for reading the file
+ * @delim: Set of string delimiters
+ *
+ * Return: A pointer to an array of tokenized strings
+ */
 char **split_string(char *buf, char *delim)
 {
 	char *opcode = NULL, **arr = NULL;

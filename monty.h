@@ -44,16 +44,29 @@ typedef struct instruction_s
 
 extern stack_t *stack;
 
-void (*check_opcode(char **instruct, unsigned int line_number, char *buf, char **instructions))(stack_t **stack, unsigned int line_number);
-int execute(char **instruct, unsigned int line_number, char *buf, char **instructions);
-void malloc_failed(void);
+typedef void (*func)(stack_t **stack, unsigned int line_number);
+
+func check_opcode(char **instruct, unsigned int line_number, char *buf,
+		char **instructions);
+
+/* opcode function */
+void push(int integer);
 void pall(void);
+
+/* Processes */
+int execute(char **instruct, unsigned int line_number, char *buf,
+		char **instructions);
 char **split_string(char *buf, char *delim);
+
+/* Helper function */
 void _free(char **arr);
 void free_list(void);
 
 /* Errors */
 void push_err(stack_t **stack, unsigned int line_number);
 void pall_err(stack_t **stack, unsigned int line_number);
+void usage_error(void);
+void open_error(char *file);
+void malloc_failed(void);
 
 #endif /* _MONTY_H_ */

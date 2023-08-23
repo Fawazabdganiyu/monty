@@ -1,6 +1,16 @@
 #include "monty.h"
 
-/***/
+int _isdigit(char *integer);
+void push(int integer);
+int execute(char **instruct, unsigned int line_number,
+		char *buf, char **instructions);
+
+/**
+ * _isdigit - checks if a charater pointer is an integer
+ * @integer: The integer to be checked
+ *
+ * Return: Non-zero if its a digit, 0 if not
+ */
 int _isdigit(char *integer)
 {
 	int i;
@@ -14,10 +24,14 @@ int _isdigit(char *integer)
 	return (1);
 }
 
-/***/
+/**
+ * push - pushs an integer to stack list
+ * @integer: An integer to be pushed
+ */
 void push(int integer)
 {
 	stack_t *new = malloc(sizeof(stack_t));
+
 	if (new == NULL)
 		malloc_failed();
 
@@ -29,8 +43,17 @@ void push(int integer)
 	stack = new;
 }
 
-/***/
-int execute(char **instruct, unsigned int line_number, char *buf, char **instructions)
+/**
+ * executes - interprets the opcode accordingly
+ * @instruct: A pointer to an array of opcode and/or its integer
+ * @line_number: The line number where the opcode is found
+ * @buf: The buffer used for reading the file
+ * @instructions: A pointer to an array that consist the opcodes line by line
+ *
+ * Return: 0 on success, non-zero on failure
+ */
+int execute(char **instruct, unsigned int line_number,
+		char *buf, char **instructions)
 {
 	line_number++;
 	if (strcmp(instruct[0], "push") == 0)
