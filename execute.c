@@ -55,7 +55,6 @@ void push(int integer)
 int execute(char **instruct, unsigned int line_number,
 		char *buf, char **instructions)
 {
-	line_number++;
 	if (strcmp(instruct[0], "push") == 0)
 	{
 		if (!instruct[1] || _isdigit(instruct[1]) == 0)

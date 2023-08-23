@@ -33,7 +33,7 @@ int main(int ac, char **av)
 		for (i = 0; instructions[i]; i++)
 		{
 			instruct = split_string(instructions[i], " ");
-			func = check_opcode(instruct, i, buf, instructions);
+			func = check_opcode(instruct, i + 1, buf, instructions);
 			if (func != NULL)
 				func(&stack, i);
 

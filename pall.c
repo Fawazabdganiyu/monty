@@ -7,10 +7,13 @@ void pall(void)
 {
 	stack_t *temp;
 
-	temp = stack;
-	while (temp)
+	if (stack != NULL)
 	{
-		printf("%d\n", temp->n);
-		temp = temp->next;
+		temp = stack;
+		while (temp)
+		{
+			printf("%d\n", temp->n);
+			temp = temp->next;
+		}
 	}
 }
