@@ -42,29 +42,28 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *stack;
+extern int n;
 
 typedef void (*func)(stack_t **stack, unsigned int line_number);
 
-func check_opcode(char **instruct, unsigned int line_number, char *buf,
+func check_opcode(stack_t **stack, char **instruct, unsigned int line_number, char *buf,
 		char **instructions);
 
 /* opcode function */
-void push(int integer);
-void pall(void);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 
 /* Processes */
-int execute(char **instruct, unsigned int line_number, char *buf,
-		char **instructions);
 char **split_string(char *buf, char *delim);
 
 /* Helper function */
 void _free(char **arr);
-void free_list(void);
+void free_list(stack_t **stack);
+int _isdigit(char *integer);
+void clean_up(stack_t **stack, char **instruct, char **instructions, char *buf);
+void final_clean(stack_t **stack, char *buf, int fd);
 
 /* Errors */
-void push_err(stack_t **stack, unsigned int line_number);
-void pall_err(stack_t **stack, unsigned int line_number);
 void usage_error(void);
 void open_error(char *file);
 void malloc_failed(void);

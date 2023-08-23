@@ -1,3 +1,3 @@
 #include "monty.h"
 
-stack_t *stack = NULL;
+int n = 0;

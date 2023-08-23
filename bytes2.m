@@ -1,7 +1,7 @@
 push 0
 push 1
 push 2
-  push 6y 
+  push 6 
                    pall    
 push 4
     push 5    

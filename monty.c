@@ -10,8 +10,10 @@
 int main(int ac, char **av)
 {
 	char *file = av[1], *buf = NULL, **instructions = NULL, **instruct = NULL;
-	int nread, i, fd;
+	int nread, fd;
+	unsigned int i;
 	void (*func)(stack_t **stack, unsigned int line_number);
+	stack_t *stack = NULL;
 
 	if (ac != 2)
 		usage_error();
@@ -33,17 +35,18 @@ int main(int ac, char **av)
 		for (i = 0; instructions[i]; i++)
 		{
 			instruct = split_string(instructions[i], " ");
-			func = check_opcode(instruct, i + 1, buf, instructions);
+			func = check_opcode(&stack, instruct, i + 1, buf, instructions);
 			if (func != NULL)
-				func(&stack, i);
-
+				func(&stack, i + 1);
+			else
+			{
+				dprintf(2, "L%u: unknown instruction %s\n", i + 1, instruct[0]);
+				clean_up(&stack, instruct, instructions, buf);
+			}
 			_free(instruct);
 		}
 		_free(instructions);
 	}
-
-	free_list();
-	free(buf);
-	close(fd);
+	final_clean(&stack, buf, fd);
 	return (0);
 }
