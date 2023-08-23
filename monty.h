@@ -53,6 +53,7 @@ func check_opcode(stack_t **stack, char **instruct, unsigned int line_number, ch
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 /* Processes */
 char **split_string(char *buf, char *delim);
