@@ -18,7 +18,6 @@ int _isdigit(char *integer)
 void push(int integer)
 {
 	stack_t *new = malloc(sizeof(stack_t));
-
 	if (new == NULL)
 		malloc_failed();
 
@@ -31,7 +30,7 @@ void push(int integer)
 }
 
 /***/
-int execute(char **instruct, unsigned int line_number)
+int execute(char **instruct, unsigned int line_number, char *buf, char **instructions)
 {
 	line_number++;
 	if (strcmp(instruct[0], "push") == 0)
@@ -39,6 +38,11 @@ int execute(char **instruct, unsigned int line_number)
 		if (!instruct[1] || _isdigit(instruct[1]) == 0)
 		{
 			dprintf(2, "L%u: usage: push integer\n", line_number);
+
+			free_list();
+			_free(instruct);
+			_free(instructions);
+			free(buf);
 			exit(EXIT_FAILURE);
 		}
 		else

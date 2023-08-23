@@ -44,12 +44,13 @@ typedef struct instruction_s
 
 extern stack_t *stack;
 
-void (*check_opcode(char **instruct, unsigned int line_number))(stack_t **stack, unsigned int     line_number);
-int execute(char **instruct, unsigned int line_number);
+void (*check_opcode(char **instruct, unsigned int line_number, char *buf, char **instructions))(stack_t **stack, unsigned int line_number);
+int execute(char **instruct, unsigned int line_number, char *buf, char **instructions);
 void malloc_failed(void);
-stack_t *init_stack(void);
 void pall(void);
 char **split_string(char *buf, char *delim);
+void _free(char **arr);
+void free_list(void);
 
 /* Errors */
 void push_err(stack_t **stack, unsigned int line_number);

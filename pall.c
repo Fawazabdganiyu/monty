@@ -3,9 +3,12 @@
 /***/
 void pall(void)
 {
-	while (stack)
+	stack_t *temp;
+
+	temp = stack;
+	while (temp)
 	{
 		printf("%d\n", stack->n);
-		stack = stack->next;
+		temp = temp->next;
 	}
 }

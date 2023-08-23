@@ -29,7 +29,8 @@ unsigned int get_words(char *s)
 /***/
 unsigned int get_line(char *buf)
 {
-	unsigned int lines = 0, i;
+	unsigned int lines = 0;
+	int i;
 
 	for (i = 0; buf[i]; i++)
 	{
@@ -43,8 +44,8 @@ unsigned int get_line(char *buf)
 /***/
 char **split_string(char *buf, char *delim)
 {
-	char *opcode, **arr;
-	unsigned int lines, i = 0;
+	char *opcode = NULL, **arr = NULL;
+	unsigned int lines, i;
 
 	lines = get_line(buf);
 	if (lines == 0)
@@ -54,6 +55,7 @@ char **split_string(char *buf, char *delim)
 	if (arr == NULL)
 		malloc_failed();
 
+	i = 0;
 	opcode = strtok(buf, delim);
 	while (opcode)
 	{

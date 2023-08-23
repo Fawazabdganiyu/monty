@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /***/
-void (*check_opcode(char **instruct, unsigned int line_number))(stack_t **stack, unsigned int line_number)
+void (*check_opcode(char **instruct, unsigned int line_number, char *buf, char **instructions))(stack_t **stack, unsigned int line_number)
 {
 	int i;
 
@@ -15,7 +15,7 @@ void (*check_opcode(char **instruct, unsigned int line_number))(stack_t **stack,
 	{
 		if (strcmp(codes[i].opcode, instruct[0]) == 0)
 		{
-			if (execute(instruct, line_number) == -1)
+			if (execute(instruct, line_number, buf, instructions) == -1)
 				return (codes[i].f);
 		}
 	}

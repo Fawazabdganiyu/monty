@@ -3,7 +3,7 @@
 /***/
 int main(int ac, char **av)
 {
-	char *file = av[1], *buf, **instructions, **instruct;
+	char *file = av[1], *buf, **instructions = NULL, **instruct = NULL;
 	int nread, i, fd;
 	void (*func)(stack_t **stack, unsigned int line_number);
 
@@ -19,7 +19,8 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
-	buf = malloc(sizeof(char *) * BUF_SIZE);
+	buf = NULL;
+	buf = malloc(sizeof(char) * BUF_SIZE);
 	if (buf == NULL)
 		malloc_failed();
 
@@ -30,10 +31,16 @@ int main(int ac, char **av)
 		for (i = 0; instructions[i]; i++)
 		{
 			instruct = split_string(instructions[i], " ");
-			if ((func = check_opcode(instruct, i)) != NULL)
+			if ((func = check_opcode(instruct, i, buf, instructions)) != NULL)
 				func(&stack, i);
+
+			_free(instruct);
 		}
+		_free(instructions);
 	}
 
+	free_list();
+	free(buf);
+	close(fd);
 	return (0);
 }
