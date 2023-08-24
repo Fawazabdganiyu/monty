@@ -16,7 +16,7 @@ void parse(char **instructions, stack_t **stack, char **instruct, char *buf)
 	{
 		if (instructions[i][0] == '#')
 			continue;
-		instruct = split_string(instructions[i], " ");
+		instruct = split_string(instructions[i], " \t");
 		func = check_opcode(stack, instruct, i + 1, buf, instructions);
 		if (func != NULL)
 			func(stack, i + 1);
