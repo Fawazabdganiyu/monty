@@ -15,7 +15,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		dprintf(2, "L%d: can't pchar, stack empty\n", line_number);
+		dprintf(2, "L%u: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	num = (*stack)->n;
@@ -26,7 +26,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		dprintf(2, "L%d: can't pchar, value out of range\n", line_number);
+		dprintf(2, "L%u: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }
