@@ -23,7 +23,7 @@ func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
 
 	for (i = 0; codes[i].opcode; i++)
 	{
-		if (strcmp(codes[i].opcode, instruct[0]) == 0 || (codes[i].opcode[0] == '#'))
+		if (strcmp(codes[i].opcode, instruct[0]) == 0 || (instruct[0][0] == '#'))
 		{
 			if (strcmp(instruct[0], "push") == 0 &&
 					(!instruct[1] || !_isdigit(instruct[1])))
