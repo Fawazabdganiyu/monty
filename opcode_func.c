@@ -1,5 +1,6 @@
 #include "monty.h"
 
+void mod(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void divide(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
@@ -10,6 +11,39 @@ void pop(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
+
+/**
+ * mod - computes the rest of the division of the second top
+ *	element of the stack by the top element of the stack.
+ *
+ * @line_number: The line number where the opcode was found
+ * @stack: A pointer to the stack list pointer
+ */
+void mod(stack_t **stack, unsigned int line_number)
+{
+	int result = 0;
+	stack_t *temp;
+
+	if (!*stack || !(*stack)->next)
+	{
+		dprintf(2, "L%u: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if ((*stack)->n == 0)
+	{
+		dprintf(2, "L%u: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	result = (*stack)->next->n % (*stack)->n;
+
+	(*stack)->next->n = result;
+	temp = *stack;
+	*stack = (*stack)->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(temp);
+}
 
 /**
  * mul - multiplies the second top element of the stack with
