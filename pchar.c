@@ -3,7 +3,7 @@
 /**
  * pchar - prints integer at the top of stack as character
  * @stack: the stack
- * @line_number
+ * @line_number: : The line number where the opcode was found
  *
  * Return: void
  */
