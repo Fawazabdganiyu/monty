@@ -23,11 +23,11 @@ void pstr(stack_t **stack, unsigned int line_number)
 		num = temp->n;
 		if (num <= 0 || num > 127)
 		{
-			printf("\n");
 			break;
 		}
 		c = num + 0;
-		printf("%c\n", c);
+		printf("%c", c);
 		temp = temp->next;
 	}
+	printf("\n");
 }
