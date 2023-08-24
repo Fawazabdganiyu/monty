@@ -28,12 +28,12 @@ int main(int ac, char **av)
 
 	memset(buf, 0, BUF_SIZE);
 	while ((nread = read(fd, buf, BUF_SIZE)) > 0)
-	{
-		/* Get an array of opcodes by their lines */
+	{	/* Get an array of opcodes by their lines */
 		instructions = split_string(buf, "\n");
-		/* Split each opcode on each line into its opcode and integer if it has */
 		for (i = 0; instructions[i]; i++)
 		{
+			if (instructions[i][0] == '#')
+				continue;
 			instruct = split_string(instructions[i], " ");
 			func = check_opcode(&stack, instruct, i + 1, buf, instructions);
 			if (func != NULL)
