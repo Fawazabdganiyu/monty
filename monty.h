@@ -65,6 +65,7 @@ void pchar(stack_t **stack, unsigned int line_number);
 
 /* Processes */
 char **split_string(char *buf, char *delim);
+void parse(char **instructions, stack_t **stack, char **instruct, char *buf);
 
 /* Helper function */
 void _free(char **arr);
@@ -74,6 +75,7 @@ void clean_up(stack_t **stack, char **instruct, char **instructions,
 		char *buf);
 void final_clean(stack_t **stack, char *buf, int fd);
 unsigned int count_stack(stack_t *stack);
+const char *reduce_blank(const char *s);
 
 /* Errors */
 void usage_error(void);
