@@ -17,7 +17,7 @@ func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
 	instruction_t codes[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"swap", swap},	{"add", add}, {"nop", nop}, {"sub", sub},
-		{"div", divide}, {"mul", mul}, {"mod", mod}, {"#", nop},
+		{"div", divide}, {"mul", mul}, {"mod", mod}, {"#", nop}, {"pchar", pchar},
 		{NULL, NULL}
 	};
 
