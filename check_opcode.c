@@ -24,6 +24,7 @@ func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
 		{"nop", nop},
 		{"sub", sub},
 		{"div", divide},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 

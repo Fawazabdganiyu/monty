@@ -1,5 +1,6 @@
 #include "monty.h"
 
+void mul(stack_t **stack, unsigned int line_number);
 void divide(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
@@ -9,6 +10,33 @@ void pop(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
+
+/**
+ * mul - multiplies the second top element of the stack with
+ *	the top element of the stack.
+ * @line_number: The line number where the opcode was found
+ * @stack: A pointer to the stack list pointer
+ */
+void mul(stack_t **stack, unsigned int line_number)
+{
+	int result = 0;
+	stack_t *temp;
+
+	if (!*stack || !(*stack)->next)
+	{
+		dprintf(2, "L%u: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	result = (*stack)->next->n * (*stack)->n;
+
+	(*stack)->next->n = result;
+	temp = *stack;
+	*stack = (*stack)->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(temp);
+}
 
 /**
  * divide - divides the second top element of the stack by
