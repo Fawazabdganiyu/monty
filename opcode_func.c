@@ -1,10 +1,46 @@
 #include "monty.h"
 
+void add(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
+
+/**
+ * add - adds the top two elements of the stack.
+ * @line_number: The line number where the opcode was found
+ * @stack: A pointer to the stack list pointer
+ */
+void add(stack_t **stack, unsigned int line_number)
+{
+	unsigned int count;
+	int sum = 0;
+	stack_t *temp;
+
+	count = count_stack(*stack);
+	if (count < 2)
+	{
+		dprintf(2, "L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	count = 0;
+	temp = *stack;
+	while (count < 2 && temp)
+	{
+		sum += temp->n;
+		count++;
+		temp = temp->next;
+	}
+
+	(*stack)->next->n = sum;
+	temp = *stack;
+	*stack = temp->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(temp);
+}
 
 /**
  * swap - swaps the top two elements of the stack

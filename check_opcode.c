@@ -20,6 +20,7 @@ func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"add", add},
 		{NULL, NULL}
 	};
 
