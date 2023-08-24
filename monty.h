@@ -46,14 +46,15 @@ extern int n;
 
 typedef void (*func)(stack_t **stack, unsigned int line_number);
 
-func check_opcode(stack_t **stack, char **instruct, unsigned int line_number, char *buf,
-		char **instructions);
+func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
+		char *buf, char **instructions);
 
 /* opcode function */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 /* Processes */
 char **split_string(char *buf, char *delim);
@@ -62,8 +63,10 @@ char **split_string(char *buf, char *delim);
 void _free(char **arr);
 void free_list(stack_t **stack);
 int _isdigit(char *integer);
-void clean_up(stack_t **stack, char **instruct, char **instructions, char *buf);
+void clean_up(stack_t **stack, char **instruct, char **instructions,
+		char *buf);
 void final_clean(stack_t **stack, char *buf, int fd);
+unsigned int count_stack(stack_t *stack);
 
 /* Errors */
 void usage_error(void);
