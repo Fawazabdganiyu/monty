@@ -21,7 +21,7 @@ const char *reduce_blank(const char *s)
 			s++;
 		}
 
-		return (s - 1);
+		return (s);
 	}
 
 	return (s);
