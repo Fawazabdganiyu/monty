@@ -17,12 +17,14 @@ func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
 	instruction_t codes[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"swap", swap},	{"add", add}, {"nop", nop}, {"sub", sub},
-		{"div", divide}, {"mul", mul}, {"mod", mod},
+		{"div", divide}, {"mul", mul}, {"mod", mod}, {"#", nop},
 		{NULL, NULL}
 	};
 
 	for (i = 0; codes[i].opcode; i++)
 	{
+		if (codes[i].opcode[0] == instruct[0][0])
+			return (codes[i].f);
 		if (strcmp(codes[i].opcode, instruct[0]) == 0)
 		{
 			if (strcmp(instruct[0], "push") == 0 &&
