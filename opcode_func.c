@@ -10,6 +10,33 @@ void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 
 /**
+ * sub - subtracts the top element of the stack from
+ *	the second top element of the stack.
+ * @line_number: The line number where the opcode was found
+ * @stack: A pointer to the stack list pointer
+ */
+void sub(stack_t **stack, unsigned int line_number)
+{
+	int dif = 0;
+	stack_t *temp;
+
+	if (!*stack || !(*stack)->next)
+	{
+		dprintf(2, "L%u: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	dif = (*stack)->next->n - (*stack)->n;
+
+	(*stack)->next->n = dif;
+	temp = *stack;
+	*stack = (*stack)->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(temp);
+}
+
+/**
  * nop - doesn't do anything.
  * @stack: A pointer to the stack list pointer
  * @line_number: The line number where the opcode was found
