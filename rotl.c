@@ -13,14 +13,18 @@ void rotl(stack_t **stack, unsigned int line_number)
 	stack_t *temp, *new_stack;
 
 	(void)line_number;
-	new_stack = (*stack)->next;
-	temp = *stack;
-	/* Locate the end of list */
-	while (temp->next)
-		temp = temp->next;
 
-	(*stack)->prev = temp;
-	temp->next = *stack;
-	(*stack)->next = NULL;
-	*stack = new_stack;
+	if (*stack && (*stack)->next)
+	{
+		new_stack = (*stack)->next;
+		temp = *stack;
+		/* Locate the end of list */
+		while (temp->next)
+			temp = temp->next;
+
+		(*stack)->prev = temp;
+		temp->next = *stack;
+		(*stack)->next = NULL;
+		*stack = new_stack;
+	}
 }
