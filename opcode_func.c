@@ -1,11 +1,23 @@
 #include "monty.h"
 
+void nop(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
+
+/**
+ * nop - doesn't do anything.
+ * @stack: A pointer to the stack list pointer
+ * @line_number: The line number where the opcode was found
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
 
 /**
  * add - adds the top two elements of the stack.
