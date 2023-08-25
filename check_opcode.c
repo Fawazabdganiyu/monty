@@ -11,7 +11,7 @@
  * Return: A pointer to a function that returns void
  */
 func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
-		char *buf, char **instructions)
+		char *buf, char *instructions)
 {
 	int i;
 	instruction_t codes[] = {
