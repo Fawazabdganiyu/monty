@@ -22,7 +22,7 @@ void parse(char **instructions, stack_t **stack, char **instruct, char *buf)
 			func(stack, i + 1);
 		else
 		{
-			dprintf(2, "L%u: unknown instruction %s\n", i + 1, instruct[0]);
+			fprintf(stderr, "L%u: unknown instruction %s\n", i + 1, instruct[0]);
 			clean_up(stack, instruct, instructions, buf);
 		}
 		_free(instruct);

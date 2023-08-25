@@ -78,6 +78,7 @@ void clean_up(stack_t **stack, char **instruct, char **instructions,
 		char *buf);
 void final_clean(stack_t **stack, char *buf, int fd);
 unsigned int count_stack(stack_t *stack);
+char *_strdup(char *str);
 
 /* Errors */
 void usage_error(void);

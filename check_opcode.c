@@ -29,7 +29,7 @@ func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
 			if (strcmp(instruct[0], "push") == 0 &&
 					(!instruct[1] || !_isdigit(instruct[1])))
 			{
-				dprintf(2, "L%u: usage: push integer\n", line_number);
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				clean_up(stack, instruct, instructions, buf);
 			}
 			else if (strcmp(instruct[0], "push") == 0)
