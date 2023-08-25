@@ -9,7 +9,7 @@
  */
 int main(int ac, char **av)
 {
-	char *file = av[1], *buf = NULL, *instructions = NULL, **instruct = NULL;
+	char *file = av[1], *buf = NULL, **instruct = NULL;
 	FILE *fp;
 	stack_t *stack = NULL;
 	unsigned int line_number = 0, len;
@@ -33,8 +33,7 @@ int main(int ac, char **av)
 		/* Change newline at the end of a line to NULL byte */
 		buf[len - 1] = '\0';
 		/* Get opcode by its line */
-		instructions = _strdup(buf);
-		parse(instructions, &stack, instruct, buf, line_number);
+		parse(&stack, instruct, buf, line_number);
 	}
 	final_clean(&stack, buf, fp);
 	return (0);

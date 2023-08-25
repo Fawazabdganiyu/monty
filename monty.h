@@ -68,7 +68,7 @@ void rotr(stack_t **stack, unsigned int line_number);
 
 /* Processes */
 char **split_string(char *buf, char *delim);
-void parse(char *instructions, stack_t **stack, char **instruct,
+void parse(stack_t **stack, char **instruct,
 		char *buf, unsigned int new_line);
 
 /* Helper function */
@@ -80,6 +80,7 @@ void clean_up(stack_t **stack, char **instruct, char *instructions,
 void final_clean(stack_t **stack, char *buf, FILE *fp);
 unsigned int count_stack(stack_t *stack);
 char *_strdup(char *str);
+char *reduce_blank(char *s);
 
 /* Errors */
 void usage_error(void);
