@@ -14,7 +14,10 @@ void parse(char *instructions, stack_t **stack, char **instruct,
 	void (*func)(stack_t **stack, unsigned int line_number);
 
 	if (instructions[0] == '#' || instructions[0] == '\0')
+	{
+		free(instructions);
 		return;
+	}
 	instruct = split_string(instructions, " \t");
 	func = check_opcode(stack, instruct, line_number, buf, instructions);
 	if (func != NULL)
