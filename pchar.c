@@ -21,7 +21,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	num = (*stack)->n;
 	if (num >= 0 && num < 128)
 	{
-		c = num;
+		c = num + 0;
 		printf("%c\n", c);
 	}
 	else

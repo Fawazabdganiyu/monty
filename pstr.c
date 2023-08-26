@@ -23,6 +23,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 		num = temp->n;
 		if (num <= 0 || num > 127)
 		{
+			dprintf(2, "Out of range\n");
 			break;
 		}
 		c = num + 0;
