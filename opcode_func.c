@@ -278,9 +278,8 @@ void push(stack_t **stack, unsigned int line_number)
 		malloc_failed();
 
 	new->n = n;
-	new->prev = NULL;
-	new->next = *stack;
-	if (*stack != NULL)
-		(*stack)->prev = new;
-	*stack = new;
+	if (mode == 0)
+		add_stack(stack, new);
+	else if (mode == 1)
+		add_stack_end(stack, new);
 }

@@ -43,6 +43,7 @@ typedef struct instruction_s
 } instruction_t;
 
 extern int n;
+extern int mode;
 
 typedef void (*func)(stack_t **stack, unsigned int line_number);
 
@@ -65,6 +66,8 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+void stack_(stack_t **stack, unsigned int line_number);
 
 /* Processes */
 char **split_string(char *buf, char *delim);
@@ -81,6 +84,8 @@ void final_clean(stack_t **stack, char *buf, FILE *fp);
 unsigned int count_stack(stack_t *stack);
 char *_strdup(char *str);
 char *reduce_blank(char *s);
+void add_stack(stack_t **stack, stack_t *new_node);
+void add_stack_end(stack_t **stack, stack_t *new_node);
 
 /* Errors */
 void usage_error(void);
