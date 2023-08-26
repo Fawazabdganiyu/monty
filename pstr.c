@@ -27,11 +27,6 @@ void pstr(stack_t **stack, unsigned int line_number)
 	{
 		num = temp->n;
 		if (num <= 0 || num > 127)
-<<<<<<< HEAD
-		{
-			dprintf(2, "Out of range\n");
-=======
->>>>>>> 954340cfe8c97757e36ebd504bdf5b8157c7d086
 			break;
 
 		printf("%c", num);
