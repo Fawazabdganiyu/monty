@@ -26,13 +26,13 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	if (!*stack || !(*stack)->next)
 	{
-		dprintf(2, "L%u: can't mod, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	if ((*stack)->n == 0)
 	{
-		dprintf(2, "L%u: division by zero\n", line_number);
+		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	result = (*stack)->next->n % (*stack)->n;
@@ -58,7 +58,7 @@ void mul(stack_t **stack, unsigned int line_number)
 
 	if (!*stack || !(*stack)->next)
 	{
-		dprintf(2, "L%u: can't mul, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -86,13 +86,13 @@ void divide(stack_t **stack, unsigned int line_number)
 
 	if (!*stack || !(*stack)->next)
 	{
-		dprintf(2, "L%u: can't div, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	if ((*stack)->n == 0)
 	{
-		dprintf(2, "L%u: division by zero\n", line_number);
+		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	result = (*stack)->next->n / (*stack)->n;
@@ -118,7 +118,7 @@ void sub(stack_t **stack, unsigned int line_number)
 
 	if (!*stack || !(*stack)->next)
 	{
-		dprintf(2, "L%u: can't sub, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -157,7 +157,7 @@ void add(stack_t **stack, unsigned int line_number)
 	count = count_stack(*stack);
 	if (count < 2)
 	{
-		dprintf(2, "L%u: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -191,7 +191,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	count = count_stack(*stack);
 	if (count < 2)
 	{
-		dprintf(2, "L%u: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -216,7 +216,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		dprintf(2, "L%u: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -238,7 +238,7 @@ void pint(stack_t **stack, unsigned int line_number)
 		printf("%d\n", (*stack)->n);
 	else
 	{
-		dprintf(2, "L%u: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }

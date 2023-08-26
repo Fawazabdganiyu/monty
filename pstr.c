@@ -11,23 +11,30 @@
 void pstr(stack_t **stack, unsigned int line_number)
 {
 	int num;
-	char c;
 	stack_t *temp;
 
 	(void)line_number;
+
 	if (*stack == NULL)
-		dprintf(2, "\n");
+	{
+		printf("\n");
+		return;
+	}
+
 	temp = *stack;
+
 	while (temp != NULL)
 	{
 		num = temp->n;
 		if (num <= 0 || num > 127)
+<<<<<<< HEAD
 		{
 			dprintf(2, "Out of range\n");
+=======
+>>>>>>> 954340cfe8c97757e36ebd504bdf5b8157c7d086
 			break;
-		}
-		c = num + 0;
-		printf("%c", c);
+
+		printf("%c", num);
 		temp = temp->next;
 	}
 	printf("\n");

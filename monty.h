@@ -1,7 +1,7 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
-#define BUF_SIZE 1024
+#define BUF_SIZE 128
 
 #include <stdio.h>
 #include <sys/types.h>
@@ -47,7 +47,7 @@ extern int n;
 typedef void (*func)(stack_t **stack, unsigned int line_number);
 
 func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
-		char *buf, char **instructions);
+		char *buf, char *instructions);
 
 /* opcode function */
 void push(stack_t **stack, unsigned int line_number);
@@ -63,19 +63,24 @@ void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 
 /* Processes */
 char **split_string(char *buf, char *delim);
-void parse(char **instructions, stack_t **stack, char **instruct, char *buf);
+void parse(stack_t **stack, char **instruct,
+		char *buf, unsigned int new_line);
 
 /* Helper function */
 void _free(char **arr);
 void free_list(stack_t **stack);
 int _isdigit(char *integer);
-void clean_up(stack_t **stack, char **instruct, char **instructions,
+void clean_up(stack_t **stack, char **instruct, char *instructions,
 		char *buf);
-void final_clean(stack_t **stack, char *buf, int fd);
+void final_clean(stack_t **stack, char *buf, FILE *fp);
 unsigned int count_stack(stack_t *stack);
+char *_strdup(char *str);
+char *reduce_blank(char *s);
 
 /* Errors */
 void usage_error(void);

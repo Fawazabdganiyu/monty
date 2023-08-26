@@ -11,12 +11,12 @@
  * Return: A pointer to a function that returns void
  */
 func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
-		char *buf, char **instructions)
+		char *buf, char *instructions)
 {
 	int i;
 	instruction_t codes[] = {
-		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
-		{"swap", swap},	{"add", add}, {"nop", nop}, {"sub", sub},
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"rotr", rotr},
+		{"swap", swap},	{"add", add}, {"nop", nop}, {"sub", sub}, {"rotl", rotl},
 		{"div", divide}, {"mul", mul}, {"mod", mod}, {"#", nop}, {"pchar", pchar},
 		{"pstr", pstr},
 		{NULL, NULL}
@@ -29,7 +29,7 @@ func check_opcode(stack_t **stack, char **instruct, unsigned int line_number,
 			if (strcmp(instruct[0], "push") == 0 &&
 					(!instruct[1] || !_isdigit(instruct[1])))
 			{
-				dprintf(2, "L%u: usage: push integer\n", line_number);
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				clean_up(stack, instruct, instructions, buf);
 			}
 			else if (strcmp(instruct[0], "push") == 0)

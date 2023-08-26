@@ -74,10 +74,9 @@ char **split_string(char *buf, char *delim)
 	opcode = strtok(buf, delim);
 	while (opcode)
 	{
-		arr[i++] = strdup(opcode);
+		arr[i++] = _strdup(opcode);
 		opcode = strtok(NULL, delim);
 	}
 	arr[i] = NULL;
-
 	return (arr);
 }

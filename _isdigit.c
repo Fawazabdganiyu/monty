@@ -14,6 +14,8 @@ int _isdigit(char *integer)
 
 	for (i = 0; integer[i]; i++)
 	{
+		if (integer[i] == '-')
+			continue;
 		if (isdigit(integer[i]) == 0)
 			return (0);
 	}
